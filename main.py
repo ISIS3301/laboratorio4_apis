@@ -4,6 +4,7 @@ from typing import Optional
 from fastapi import FastAPI
 from DataModel import DataModel
 from joblib import load
+from typing import List
 
 app = FastAPI()
 
@@ -14,12 +15,16 @@ def read_root():
 
 
 @app.post("/predict")
-def make_predictions(dataModel: DataModel):
-    df = pd.DataFrame(dataModel.dict(), columns=dataModel.dict().keys(), index=[0])
-    df.columns = dataModel.columns()
+def make_predictions(dataModel: List[DataModel]):
+    lista = []
+    for i in dataModel:
+        lista.append(i.dict())
+    df = pd.DataFrame(lista)
+    df.columns = dataModel[0].columns()
     model = load("assets/modelo.joblib")
     result = model.predict(df)
-    return result
+    dic = {"resultado": result.tolist()}
+    return dic
 
 @app.get("/items/{item_id}")
 def read_item(item_id: int, q: Optional[str] = None):
