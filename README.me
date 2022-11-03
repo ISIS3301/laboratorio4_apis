@@ -1,0 +1,16 @@
+Integrantes: Andres Peña  -   201913766
+             Isabela Martinez - 202012613
+             Juan Jose Cordoba  - 201922105
+             
+Instrucciones de despliegue de la API:
+1. Clonar el repostorio en su maquina
+2. Abrir en la terminal la carpeta donde clono el repositorio
+3. Ejecutar el siguiente comando: uvicorn main:app --reload
+4. Abrir en su navegador de preferencia el siguiente link: http://127.0.0.1:8000/docs
+5. Si quiere predecir la variable objetivo ("Admission Points") despliegue la opcion de "predict" y luego 
+ingrese una o más instancias de datos con la totalidad de las características requeridas para las que se desea realizar la predicción. La prediccion 
+aparecera en la parte de abajo.
+6. Si requiere re-entrenar el modelo despliegue la opcion "retrain" e ingrese una cantidad relevante de instancias de datos que servirán para realizar 
+un proceso de re-entrenamiento del modelo, razón por la cual, además de enviar las características, también será requisito enviar la variable objetivo.
+Las metricas de este nuevo modelo apareceran en la parte de abajo. Al hacer el re-entreno su nuevo modelo se guardara y usted podra hacer las 
+predicciones como se explico en el numeral anterior con este modelo.
